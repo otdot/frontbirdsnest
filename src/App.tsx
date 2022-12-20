@@ -1,13 +1,11 @@
-import DroneInfo from "./components/DroneInfo"
+import DroneInfo from "./components/DroneInfo";
 
 function App() {
-
   return (
     <div>
-      <DroneInfo/>
+      <DroneInfo />
     </div>
-
-    )
+  );
 }
 
-export default App
+export default App;

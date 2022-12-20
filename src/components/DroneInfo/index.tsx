@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getViolatingDrones } from "../../services/droneServices";
 import { IPilot } from "../../types";
+import PilotInfo from "./PilotInfo";
 
 const DroneInfo = () => {
   const { data: drones, status } = useQuery<IPilot[]>(
     ["drones"],
     getViolatingDrones,
-    { staleTime: 60000 }
+    { refetchInterval: 15000 }
   );
 
   if (status === "loading") {
@@ -18,11 +19,16 @@ const DroneInfo = () => {
     return <p>Error</p>;
   }
 
+  if (drones.length < 1) {
+    return <p>No violations in last 10minutes </p>;
+  }
+  console.log({ drones });
   return (
     <div>
-      {drones?.map((drone: IPilot) => (
-        <p key={drone.pilotId}>{drone.pilotId}</p>
-      ))}
+      {drones.map(
+        (drone: IPilot) =>
+          drone && <PilotInfo key={drone.pilotId} details={drone} />
+      )}
     </div>
   );
 };

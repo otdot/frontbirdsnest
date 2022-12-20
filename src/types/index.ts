@@ -7,7 +7,6 @@ export const PilotSchema = z.object({
   phoneNumber: z.string(),
   createdDt: z.string(),
   email: z.string(),
-  ttl: z.number(),
 });
 
 export type IPilot = z.infer<typeof PilotSchema>;
