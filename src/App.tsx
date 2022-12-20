@@ -1,9 +1,14 @@
+import { useState } from "react";
+import AsideNav from "./components/AsideNav";
 import DroneInfo from "./components/DroneInfo";
 
 function App() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
-    <div>
-      <DroneInfo />
+    <div className="relative">
+      <AsideNav setShowMore={setShowMore} />
+      <DroneInfo showMore={showMore} />
     </div>
   );
 }
