@@ -6,9 +6,13 @@ function App() {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="relative">
-      <AsideNav setShowMore={setShowMore} />
-      <DroneInfo showMore={showMore} />
+    <div className="flex">
+      <div className="flex-initial w-6">
+        <AsideNav showMore={showMore} setShowMore={setShowMore} />
+      </div>
+      <div className="flex-initial w-screen">
+        <DroneInfo showMore={showMore} setShowMore={setShowMore} />
+      </div>
     </div>
   );
 }

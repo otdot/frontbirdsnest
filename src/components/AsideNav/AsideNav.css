@@ -2,3 +2,25 @@
   min-height: 100vh;
   height: 100%;
 }
+
+.showmore:hover + #showmoretext {
+  display: inline;
+}
+.about:hover + #abouttext {
+  display: inline;
+}
+.drones:hover + #dronestext {
+  display: inline;
+}
+.onerow {
+  white-space: nowrap;
+  @apply: flex my-1;
+}
+
+.hovericon {
+  @apply hover:border-solid hover:border-white hover:border-2 delay-100;
+}
+
+.helpertext {
+  @apply hidden items-center justify-items-center bg-blue-100 h-full px-2 rounded-lg text-black left-1 border-2 border-black border-solid;
+}

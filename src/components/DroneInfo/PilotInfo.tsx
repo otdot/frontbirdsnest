@@ -9,7 +9,7 @@ const PilotInfo = ({ details }: { details: IPilot }) => {
     details;
 
   return (
-    <div className="card-new relative container bg-gray-400 w-auto m-5 pl-5 py-2 rounded-md border-solid border-2 border-gray-500 transform duration-300 hover:scale-105">
+    <div className="card-new relative z-0 container bg-gray-400 hover:bg-gray-500 w-full m-5 pl-5 py-2 rounded-md border-solid border-2 border-gray-500 transform duration-300 hover:border-gray-700">
       <div className="relative top-0">
         <h1 className="text-2xl font-bold leading-none">
           {firstName} {lastName}

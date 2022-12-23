@@ -4,7 +4,13 @@ import { getViolatingDrones } from "../../services/droneServices";
 import { IPilot } from "../../types";
 import PilotInfo from "./PilotInfo";
 
-const DroneInfo = ({ showMore }: { showMore: boolean }) => {
+const DroneInfo = ({
+  showMore,
+  setShowMore,
+}: {
+  showMore: boolean;
+  setShowMore: (prev: any) => void;
+}) => {
   const { data: drones, status } = useQuery<IPilot[]>(
     ["drones"],
     getViolatingDrones,
@@ -32,6 +38,12 @@ const DroneInfo = ({ showMore }: { showMore: boolean }) => {
   return (
     <div className="relative mx-6">
       {showMore ? droneList : droneList.slice(0, 3)}
+      <button
+        className="absolute left-5 bg-blue-100 px-2 py-1 rounded-xl text-gray-800 hover:text-gray-900 hover:bg-blue-200 delay-100"
+        onClick={() => setShowMore((prev: boolean) => !prev)}
+      >
+        {showMore ? "show less" : "show more"}
+      </button>
     </div>
   );
 };
