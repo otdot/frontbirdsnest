@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+export const ShowDataSchema = z.object({
+  showMore: z.boolean(),
+  setShowMore: z.function().args(z.boolean()).returns(z.void()),
+});
+
 export const PilotSchema = z.object({
   pilotId: z.string(),
   firstName: z.string(),
@@ -10,3 +15,4 @@ export const PilotSchema = z.object({
 });
 
 export type IPilot = z.infer<typeof PilotSchema>;
+export type IShowData = z.infer<typeof ShowDataSchema>;

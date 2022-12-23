@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { ShowDataContext } from "../../App";
 import { useQuery } from "@tanstack/react-query";
 import { getViolatingDrones } from "../../services/droneServices";
-import { IPilot } from "../../types";
+import { IPilot, IShowData } from "../../types";
 import PilotInfo from "./PilotInfo";
 
-const DroneInfo = ({
-  showMore,
-  setShowMore,
-}: {
-  showMore: boolean;
-  setShowMore: (prev: any) => void;
-}) => {
+const DroneInfo = () => {
+  const showMore = useContext<IShowData | null>(ShowDataContext);
   const { data: drones, status } = useQuery<IPilot[]>(
     ["drones"],
     getViolatingDrones,
-    { refetchInterval: 15000 }
+    {
+      refetchInterval: 15000,
+      onSuccess: () => {
+        setTimeout(() => {
+          document.querySelector(".card-new")?.classList.remove("card-new");
+        }, 2000);
+      },
+    }
   );
 
-  if (status === "loading") {
+  if (status === "loading" || !showMore) {
     return <p>loading...</p>;
   }
 
@@ -26,7 +29,9 @@ const DroneInfo = ({
   }
 
   if (drones.length < 1) {
-    return <p>No violations in last 10minutes </p>;
+    return (
+      <div className="absolute left-12">No violations in last 10minutes </div>
+    );
   }
   const droneList = drones
     .map(
@@ -37,12 +42,12 @@ const DroneInfo = ({
 
   return (
     <div className="relative mx-6">
-      {showMore ? droneList : droneList.slice(0, 3)}
+      {showMore.showMore ? droneList : droneList.slice(0, 3)}
       <button
         className="absolute left-5 bg-blue-100 px-2 py-1 rounded-xl text-gray-800 hover:text-gray-900 hover:bg-blue-200 delay-100"
-        onClick={() => setShowMore((prev: boolean) => !prev)}
+        onClick={() => showMore.setShowMore(!showMore.showMore)}
       >
-        {showMore ? "show less" : "show more"}
+        {showMore.showMore ? "show less" : "show more"}
       </button>
     </div>
   );
