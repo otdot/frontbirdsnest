@@ -10,12 +10,14 @@ import { Link } from "react-router-dom";
 const AsideNav = () => {
   const showMore = useContext<IShowData | null>(ShowDataContext);
 
+  console.log(showMore);
+
   if (!showMore) {
     return <p>loading...</p>;
   }
 
   return (
-    <div className="w-10 bg-gray-800 text-white height100 flex flex-col">
+    <div className="w-12 bg-gray-800 text-white height100 flex flex-col align-center p-1">
       <div className="onerow h-7 z-10">
         <Link className="drones" to="/">
           <TravelExploreIcon className="hovericon" fontSize="large" />
@@ -39,7 +41,9 @@ const AsideNav = () => {
           className="showmore hover:border-solid hover:border-white hover:border-2 delay-100"
         />
         <p id="showmoretext" className="helpertext">
-          {showMore ? "Show less flight data" : "Show more flight data"}
+          {showMore.showMore
+            ? "Show less flight data"
+            : "Show more flight data"}
         </p>
       </div>
     </div>

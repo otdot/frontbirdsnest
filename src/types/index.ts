@@ -12,6 +12,8 @@ export const PilotSchema = z.object({
   phoneNumber: z.string(),
   createdDt: z.string(),
   email: z.string(),
+  posX: z.number(),
+  posY: z.number(),
 });
 
 export type IPilot = z.infer<typeof PilotSchema>;

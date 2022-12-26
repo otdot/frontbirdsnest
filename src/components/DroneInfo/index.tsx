@@ -43,12 +43,6 @@ const DroneInfo = () => {
   return (
     <div className="relative mx-6">
       {showMore.showMore ? droneList : droneList.slice(0, 3)}
-      <button
-        className="absolute left-5 bg-blue-100 px-2 py-1 rounded-xl text-gray-800 hover:text-gray-900 hover:bg-blue-200 delay-100"
-        onClick={() => showMore.setShowMore(!showMore.showMore)}
-      >
-        {showMore.showMore ? "show less" : "show more"}
-      </button>
     </div>
   );
 };
