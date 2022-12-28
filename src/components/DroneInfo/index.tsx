@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getViolatingDrones } from "../../services/droneServices";
 import { IPilot, IShowData } from "../../types";
 import PilotInfo from "./PilotInfo";
-import Svgmap from "../Map/Svgmap";
 
 const DroneInfo = () => {
   const showMore = useContext<IShowData | null>(ShowDataContext);
@@ -26,11 +25,11 @@ const DroneInfo = () => {
   );
 
   if (status === "loading" || !showMore) {
-    return <p>loading...</p>;
+    return <p className="absolute left-12">loading...</p>;
   }
 
   if (status === "error") {
-    return <p>Error</p>;
+    return <p className="absolute left-12">Error</p>;
   }
 
   if (drones.length < 1) {
