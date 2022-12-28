@@ -2,3 +2,15 @@
   background-image: url("../../../chartbg.png");
   object-fit: cover;
 }
+
+.flip {
+  width: 175px;
+  height: 175px;
+  background-image: url("../../../chartbg.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  object-fit: cover;
+}

@@ -10,7 +10,10 @@ const PilotInfo = ({ details }: { details: IPilot }) => {
     details;
 
   return (
-    <div className="flex flex-row card-new relative z-0 container bg-gray-400 hover:bg-gray-500 w-full m-5 pl-5 py-2 rounded-md border-solid border-2 border-gray-500 transform duration-300 hover:border-gray-700">
+    <div
+      id="card-new"
+      className="flex flex-row relative z-0 container bg-gray-400 hover:bg-gray-500 w-full m-5 pl-5 py-2 rounded-md border-solid border-2 border-gray-500 transform duration-300 hover:border-gray-700 max-w-2xl"
+    >
       <div className="flex-1">
         <div className="relative top-0 mt-2">
           <h1 className="text-2xl font-bold leading-none">
@@ -41,8 +44,6 @@ const PilotInfo = ({ details }: { details: IPilot }) => {
       </div>
       <div className="flex-1 flex flex-col justify-center items-center">
         <Map x={details.posX} y={details.posY} />
-        {/* pseudo-element? */}
-        <span className="absolute pointer-events-none z-1 place-items-center bg-yellow-100 opacity-50 h-36 w-36 rounded-full" />
       </div>
     </div>
   );

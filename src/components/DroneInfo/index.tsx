@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getViolatingDrones } from "../../services/droneServices";
 import { IPilot, IShowData } from "../../types";
 import PilotInfo from "./PilotInfo";
+import Svgmap from "../Map/Svgmap";
 
 const DroneInfo = () => {
   const showMore = useContext<IShowData | null>(ShowDataContext);
@@ -12,11 +13,15 @@ const DroneInfo = () => {
     getViolatingDrones,
     {
       refetchInterval: 15000,
-      onSuccess: () => {
-        setTimeout(() => {
-          document.querySelector(".card-new")?.classList.remove("card-new");
-        }, 2000);
-      },
+      // onSuccess: (data) => {
+      //   if (data.length > droneList.length) {
+      //     document.querySelector("#card-new")?.classList.add("card-new");
+      //     setTimeout(() => {
+      //       const cardnew = document.querySelectorAll(".card-new");
+      //       cardnew.forEach((card) => card.classList.remove("card-new"));
+      //     }, 2000);
+      //   }
+      // },
     }
   );
 
@@ -41,7 +46,7 @@ const DroneInfo = () => {
     .reverse();
 
   return (
-    <div className="relative mx-6">
+    <div className="relative px-12 flex flex-col justify-center items-center">
       {showMore.showMore ? droneList : droneList.slice(0, 3)}
     </div>
   );

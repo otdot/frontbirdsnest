@@ -1,30 +1,13 @@
-import React from "react";
-import Chart from "react-google-charts";
+import Info from "./Info";
 import "./Map.css";
+import Svgmap from "./Svgmap";
 
 const Map = ({ x, y }: { x: number; y: number }) => {
-  const options = {
-    title: "Drone location",
-    hAxis: { title: "X", minValue: 0, maxValue: 500000 },
-    vAxis: { title: "Y", minValue: 0, maxValue: 500000 },
-    legend: "none",
-  };
-
   return (
-    <>
-      <Chart
-        className="chart"
-        height="325px"
-        width="325px"
-        loader={<p>loading...</p>}
-        chartType="ScatterChart"
-        options={options}
-        data={[
-          ["X", "Y"],
-          [x, y],
-        ]}
-      />
-    </>
+    <div className="relative p-4 bg-white">
+      <Info />
+      <Svgmap x={Math.round(x)} y={Math.round(y)} size={175} />
+    </div>
   );
 };
 
