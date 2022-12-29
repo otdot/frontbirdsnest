@@ -35,14 +35,14 @@ const PilotInfo = ({ details }: { details: IPilot }) => {
             <EmailIcon /> {email}
           </p>
         </div>
-        <div className="absolute bottom-3">
+        <div className="detected absolute bottom-3">
           <p className="text-xs text-amber-200 montserrat">
             Detected {displayDate(createdDt)} minute
             {Number(displayDate(createdDt)) > 1 ? "s" : ""} ago
           </p>
         </div>
       </div>
-      <div className="flex-1 flex flex-col justify-center items-center">
+      <div className="graph flex-1 flex flex-col justify-center items-center">
         <Map x={details.posX} y={details.posY} />
       </div>
     </div>

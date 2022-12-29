@@ -36,7 +36,7 @@ const Footer = () => {
           </a>
         </div>
         <div className={"disclaimer"}>
-          <small>This page renders is a pre-assignment task. </small>
+          <small>This webpage is a pre-assignment task. </small>
           <small>
             More information:{" "}
             <a
