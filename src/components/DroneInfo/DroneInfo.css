@@ -3,6 +3,10 @@
   animation: slide-in 0.5s ease-out;
 }
 
+.pilotcontainer {
+  @apply relative px-12 flex flex-col justify-center items-center;
+}
+
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }

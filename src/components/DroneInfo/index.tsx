@@ -12,6 +12,7 @@ const DroneInfo = () => {
     getViolatingDrones,
     {
       refetchInterval: 15000,
+      // animation for new <PilotInfo/>
       // onSuccess: (data) => {
       //   if (data.length > droneList.length) {
       //     document.querySelector("#card-new")?.classList.add("card-new");
@@ -45,7 +46,7 @@ const DroneInfo = () => {
     .reverse();
 
   return (
-    <div className="relative px-12 flex flex-col justify-center items-center">
+    <div className="pilotcontainer">
       {showMore.showMore ? droneList : droneList.slice(0, 3)}
     </div>
   );

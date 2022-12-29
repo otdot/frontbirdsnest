@@ -10,14 +10,12 @@ import { Link } from "react-router-dom";
 const AsideNav = () => {
   const showMore = useContext<IShowData | null>(ShowDataContext);
 
-  console.log(showMore);
-
   if (!showMore) {
     return <p>loading...</p>;
   }
 
   return (
-    <div className="w-12 bg-gray-800 text-white height100 flex flex-col align-center p-1">
+    <div className="navcontainer">
       <div className="onerow h-7 z-10">
         <Link className="drones" to="/">
           <TravelExploreIcon className="hovericon" fontSize="large" />
@@ -38,7 +36,7 @@ const AsideNav = () => {
         <CloseFullscreenIcon
           onClick={() => showMore.setShowMore(!showMore.showMore)}
           fontSize="large"
-          className="showmore hover:border-solid hover:border-white hover:border-2 delay-100"
+          className="showmore"
         />
         <p id="showmoretext" className="helpertext">
           {showMore.showMore
